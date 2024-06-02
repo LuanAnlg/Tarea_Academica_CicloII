@@ -1,49 +1,67 @@
 #pragma once
 
-#include "formlib.h"
+#include "formlib.h" // Incluimos nuestra biblioteca
 
-class Forma {
+class Forma { //-> Esta será la calse padre de casi todos los siguientes objetos
 
 protected:
 
+
+	// - Hacemos uso de las variables Vec2 y ARGB para reducir codigo -
 	formlib::Vec2 posicion;
 	formlib::Vec2 tamanio;
 	formlib::Vec2 velocidad;
-
 	formlib::ARGB color;
+	// ----------------------------------------------------------------
+
 
 	System::Drawing::Rectangle canvas;
+	
 
 public:
 
-	Forma(formlib::Vec2 nuevaPosicion, formlib::Vec2 nuevaVelocidad, formlib::Vec2 nuevoTamanio, formlib::ARGB nuevoColor) :
-		posicion(nuevaPosicion), tamanio(nuevoTamanio), velocidad(nuevaVelocidad), color(nuevoColor) {
 
-		canvas = System::Drawing::Rectangle((int)posicion.x, (int)posicion.y, (int)tamanio.x, (int)tamanio.y);
+	// ---------------------------------------------------------- Constructor y Desctructor ----------------------------------------------------------
+	Forma(formlib::Vec2 nuevaPosicion, formlib::Vec2 nuevaVelocidad, formlib::Vec2 nuevoTamanio, formlib::ARGB nuevoColor) :
+		posicion(nuevaPosicion), tamanio(nuevoTamanio), velocidad(nuevaVelocidad), color(nuevoColor) { // Usamos la version abrebiada del constructor
+
+		// Devido a que System::Drawing::Rectangle esta fuera de nuestro control lo tenemos que inicializar dentro del constructor
+		this->canvas = System::Drawing::Rectangle((int)posicion.x, (int)posicion.y, (int)tamanio.x, (int)tamanio.y);
 	}
 
 	~Forma() = default;
+	// -----------------------------------------------------------------------------------------------------------------------------------------------
 
-	void setPosicion(formlib::Vec2 nuevaPosicion) { posicion = nuevaPosicion; }
-	formlib::Vec2 getPosicion() const { return posicion; }
 
-	void setVelocidad(formlib::Vec2 nuevaVelocidad) { velocidad = nuevaVelocidad; }
-	formlib::Vec2 getVelocidad() const { return velocidad; }
 
-	void setTamonio(formlib::Vec2 nuevoTamanio) { tamanio = nuevoTamanio; }
-	formlib::Vec2 getTamanio() const { return tamanio; }
+	// --------------------------------- Setter y Getter ---------------------------------
+	void setPosicion(formlib::Vec2 nuevaPosicion) { this->posicion = nuevaPosicion; }
+	formlib::Vec2 getPosicion() const { return this->posicion; }
 
-	void setColor(formlib::ARGB nuevoColor) { color = nuevoColor; }
-	formlib::ARGB getColor() const { return color; }
+	void setVelocidad(formlib::Vec2 nuevaVelocidad) { this->velocidad = nuevaVelocidad; }
+	formlib::Vec2 getVelocidad() const { return this->velocidad; }
 
+	void setTamonio(formlib::Vec2 nuevoTamanio) { this->tamanio = nuevoTamanio; }
+	formlib::Vec2 getTamanio() const { return this->tamanio; }
+
+	void setColor(formlib::ARGB nuevoColor) { this->color = nuevoColor; }
+	formlib::ARGB getColor() const { return this->color; }
+
+	void setCanvas(System::Drawing::Rectangle nuevoCanvas) { this->canvas = nuevoCanvas; }
+	System::Drawing::Rectangle getCanvas() const { return this->canvas; }
+
+	// -----------------------------------------------------------------------------------
+
+
+	// --------------------- Metodos ---------------------
 	virtual void dibujar(System::Drawing::Graphics^ gr) {}
 
 	void actualizar() {
-		posicion.x += velocidad.x;
-		posicion.y += velocidad.y;
+		this->posicion.x += this->velocidad.x;
+		this->posicion.y += this->velocidad.y;
 
-		canvas.X += (int)velocidad.x;
-		canvas.Y += (int)velocidad.y;
+		this->canvas.X += (int)this->velocidad.x;
+		this->canvas.Y += (int)this->velocidad.y;
 	}
-
+	// ---------------------------------------------------
 };

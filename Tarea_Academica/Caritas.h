@@ -32,24 +32,28 @@ namespace TareaAcademica {
 			}
 			delete caritas;
 		}
-	private: System::ComponentModel::IContainer^ components;
-	protected:
-
 	private:
+		System::ComponentModel::IContainer^ components;
 
+		// ------ Graficos ------
 		Graphics^ gr;
 		BufferedGraphics^ buffer;
+		// ----------------------
+
+		// ------ Logica ------
 		LogicaCaritas* caritas;
-	private: System::Windows::Forms::Button^ btn_cara1;
+		// --------------------
 
-	private: System::Windows::Forms::Button^ btn_cara2;
-	private: System::Windows::Forms::Button^ btn_cara3;
-
-
-		   System::Windows::Forms::Timer^ tiempoDelta;
+		// -------------- Formulario --------------
+		System::Windows::Forms::Button^ btn_cara1;
+		System::Windows::Forms::Button^ btn_cara2;
+		System::Windows::Forms::Button^ btn_cara3;
+		System::Windows::Forms::Timer^ tiempoDelta;
+		// ----------------------------------------
 
 
 #pragma region Windows Form Designer generated code
+
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
@@ -108,33 +112,33 @@ namespace TareaAcademica {
 			this->ResumeLayout(false);
 
 		}
+
 #pragma endregion
+
 	private: System::Void tiempoDelta_Tick(System::Object^ sender, System::EventArgs^ e) {
 
-		buffer->Graphics->Clear(Color::FromArgb(formlib::Blanco.a, formlib::Blanco.r, formlib::Blanco.g, formlib::Blanco.b));
-
+		// ------- UPDATE -------
 		caritas->actualizar(gr);
+		// ----------------------
+		 
+		// ------------------------------------------------------ DRAW ------------------------------------------------------
+		buffer->Graphics->Clear(Color::FromArgb(formlib::Blanco.a, formlib::Blanco.r, formlib::Blanco.g, formlib::Blanco.b));
 		caritas->dibujar(buffer->Graphics);
 		buffer->Render();
+		// ------------------------------------------------------------------------------------------------------------------
 	}
+
+	// ------------------------------------- Eventos -------------------------------------
 	private: System::Void btn_cara1_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		delete caritas;
-
-		caritas = new LogicaCaritas(gr, 0);
+		delete caritas; caritas = new LogicaCaritas(gr, 0);
 
 	}
 	private: System::Void btn_cara2_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		delete caritas;
-
-		caritas = new LogicaCaritas(gr, 1);
+		delete caritas; caritas = new LogicaCaritas(gr, 1);
 	}
 	private: System::Void btn_cara3_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		delete caritas;
-
-		caritas = new LogicaCaritas(gr, 2);
+		delete caritas; caritas = new LogicaCaritas(gr, 2);
 	}
+	// -----------------------------------------------------------------------------------
 };
 }

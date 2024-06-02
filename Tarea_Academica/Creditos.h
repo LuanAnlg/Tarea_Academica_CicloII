@@ -11,15 +11,17 @@ namespace TareaAcademica {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	public ref class Creditos : public System::Windows::Forms::Form
-	{
+	public ref class Creditos : public System::Windows::Forms::Form {
+
 	public:
+
 		Creditos(void)
 		{
 			InitializeComponent();
 		}
 
 	protected:
+
 		~Creditos()
 		{
 			if (components)
@@ -27,16 +29,14 @@ namespace TareaAcademica {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ lbl_creditos;
-	protected:
 
-	protected:
+	private:
 
-	protected:
-
-	private: System::ComponentModel::Container ^components;
+		System::Windows::Forms::Label^ lbl_creditos;
+		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
+
 		void InitializeComponent(void)
 		{
 			this->lbl_creditos = (gcnew System::Windows::Forms::Label());
@@ -51,7 +51,7 @@ namespace TareaAcademica {
 			this->lbl_creditos->Name = L"lbl_creditos";
 			this->lbl_creditos->Size = System::Drawing::Size(600, 400);
 			this->lbl_creditos->TabIndex = 0;
-			this->lbl_creditos->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->lbl_creditos->TextAlign = System::Drawing::ContentAlignment::MiddleCenter; // Funcion para centrar el texto
 			// 
 			// Creditos
 			// 
@@ -65,9 +65,11 @@ namespace TareaAcademica {
 			this->ResumeLayout(false);
 
 		}
-#pragma endregion
-	private: System::Void Creditos_Load(System::Object^ sender, System::EventArgs^ e) {
 
+#pragma endregion
+
+	private: System::Void Creditos_Load(System::Object^ sender, System::EventArgs^ e) {
+		// String de los Creditos
 		lbl_creditos->Text =
 			" - Sean Bienvenidos a nuestra tarea academica - \n\n" +
 			"Creditos:\n" +
