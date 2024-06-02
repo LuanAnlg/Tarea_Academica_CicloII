@@ -28,7 +28,6 @@ public:
 		// Devido a que System::Drawing::Rectangle esta fuera de nuestro control lo tenemos que inicializar dentro del constructor
 		this->canvas = System::Drawing::Rectangle((int)posicion.x, (int)posicion.y, (int)tamanio.x, (int)tamanio.y);
 	}
-
 	~Forma() = default;
 	// -----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -49,7 +48,6 @@ public:
 
 	void setCanvas(System::Drawing::Rectangle nuevoCanvas) { this->canvas = nuevoCanvas; }
 	System::Drawing::Rectangle getCanvas() const { return this->canvas; }
-
 	// -----------------------------------------------------------------------------------
 
 

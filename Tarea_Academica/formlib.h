@@ -17,10 +17,10 @@ namespace formlib { // Nuesto namespace
 	};
 
 	struct ARGB { // Vector 4D para colores
-		int a; // Valor de Alfa  [0 - 255];
-		int r; // Valor de Rojo  [0 - 255];
-		int g; // Valor de Verde [0 - 255];
-		int b; // Valor de Azul  [0 - 255];
+		int a; // Valor de Alfa  [0 - 255]
+		int r; // Valor de Rojo  [0 - 255]
+		int g; // Valor de Verde [0 - 255]
+		int b; // Valor de Azul  [0 - 255]
 	};
 
 	enum class Direcciones { // Direcciones

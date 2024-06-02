@@ -41,8 +41,7 @@ public:
 
 
 	// -------------------------------------------------------------------------- Constructor y Desctructor --------------------------------------------------------------------------
-
-	CaraBase(formlib::Vec2 nuevaPosicion, formlib::Vec2 nuevaVelocidad, short NuevoTipoCara)
+	CaraBase(formlib::Vec2 nuevaPosicion, formlib::Vec2 nuevaVelocidad, short nuevoTipoCara)
 		: posicion(nuevaPosicion), velocidad(nuevaVelocidad) {
 
 		// Declaramos e iniciamos nuestros punteros
@@ -66,7 +65,7 @@ public:
 		this->caraBase.push_back(new Cara(this->posicion, this->velocidad, this->caraColor));
 		this->caraBase.push_back(new Ojo({ this->posicion.x, this->posicion.y + 10 }, this->velocidad, ojosColor));
 		this->caraBase.push_back(new Ojo({ this->posicion.x + 40, this->posicion.y + 10 }, this->velocidad, this->ojosColor));
-		switch (NuevoTipoCara) { // Logica para hacer distintas caras
+		switch (nuevoTipoCara) { // Logica para hacer distintas caras
 		case 0: this->caraBase.push_back(new BocaA({ this->posicion.x + 15, this->posicion.y + 40 }, this->velocidad, this->bocaColor)); break;
 		case 1: this->caraBase.push_back(new BocaB({ this->posicion.x + 15, this->posicion.y + 40 }, this->velocidad, this->bocaColor)); break;
 		case 2: this->caraBase.push_back(new BocaC({ this->posicion.x + 15, this->posicion.y + 40 }, this->velocidad, this->bocaColor)); break;
@@ -77,18 +76,15 @@ public:
 		delete indiceColor;
 		delete random;
 	}
-
 	~CaraBase() {
 		// Eliminamos todo dentro del vector
 		for (auto parte : this->caraBase) { delete parte; }
 		this->caraBase.clear();
 	}
-
 	// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 	// --------------------------------- Setter y Getter ---------------------------------
-
 	void setPosicion(formlib::Vec2 nuevaPosicion) { this->posicion = nuevaPosicion; }
 	formlib::Vec2 getPosicion() const { return this->posicion; }
 
@@ -109,12 +105,10 @@ public:
 
 	void setCanvas(System::Drawing::Rectangle nuevoCanvas) { this->canvas = nuevoCanvas; }
 	System::Drawing::Rectangle getCanvas() const { return this->canvas; }
-
 	// -----------------------------------------------------------------------------------
 
 
 	// ------------------------- Metodos -------------------------
-
 	void dibujar(System::Drawing::Graphics^ gr) {
 		for (auto parte : this->caraBase) { parte->dibujar(gr); }
 	}
@@ -129,6 +123,5 @@ public:
 
 		for (auto parte : this->caraBase) { parte->actualizar(); }
 	}
-
 	// -----------------------------------------------------------
 };

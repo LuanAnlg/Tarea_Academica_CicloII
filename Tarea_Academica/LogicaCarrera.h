@@ -20,7 +20,6 @@ public:
 
 
 	// ------------------------------------------------------ Constructor y Desctructor ------------------------------------------------------
-
 	LogicaCarrera() {
 
 		// Declaramos e iniciamos nuestros punteros
@@ -45,18 +44,15 @@ public:
 		delete indiceVelocidad;
 		delete random;
 	}
-
 	~LogicaCarrera() {
 		for (auto cara : this->caras) { delete cara; }
 		this->caras.clear();
 	}
-
 	// ---------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 	// ------------------------------------------------------------------------------------- Metodos --------------------------------------------------------------------------------------
-
 	void dibujar(System::Drawing::Graphics^ gr) {
 		for (auto cara : this->caras) { cara->dibujar(gr); }
 		gr->FillRectangle(gcnew System::Drawing::SolidBrush(System::Drawing::Color::FromArgb(formlib::Negro.a, formlib::Negro.r, formlib::Negro.g, formlib::Negro.b)), this->meta_canvas);
@@ -69,6 +65,5 @@ public:
 		}
 		return false;
 	}
-
 	// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 };
