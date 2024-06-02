@@ -131,7 +131,6 @@ namespace TareaAcademica {
 	// ------------------------------------- Eventos -------------------------------------
 	private: System::Void btn_cara1_Click(System::Object^ sender, System::EventArgs^ e) {
 		delete caritas; caritas = new LogicaCaritas(gr, 0);
-
 	}
 	private: System::Void btn_cara2_Click(System::Object^ sender, System::EventArgs^ e) {
 		delete caritas; caritas = new LogicaCaritas(gr, 1);
